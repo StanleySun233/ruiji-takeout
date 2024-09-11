@@ -23,7 +23,7 @@ public class Employee implements Serializable {
 
     private String sex;
 
-    private String idNumber;
+    private String idNumber; // 身份证号，驼峰命名法
 
     private Integer status;
 
