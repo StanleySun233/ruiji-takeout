@@ -4,39 +4,131 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d401d8c-f7b1-430f-a321-04d0c2da2a7f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="9d401d8c-f7b1-430f-a321-04d0c2da2a7f" name="Changes" comment="commit: update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/reggie/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/reggie/ReggieApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/reggie/ReggieApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/backend/js/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backend/js/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/backend/page/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backend/page/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/backend/styles/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backend/styles/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/api/address.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/api/address.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/api/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/api/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/api/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/api/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/api/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/api/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/fonts/DIN-Bold.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/fonts/DIN-Bold.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/fonts/DIN-Medium.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/fonts/DIN-Medium.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/fonts/PingFangSC-Medium.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/fonts/PingFangSC-Medium.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/fonts/PingFangSC-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/fonts/PingFangSC-Regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/fonts/PingFangSC-Semibold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/fonts/PingFangSC-Semibold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/add.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/add.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/cart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/cart_active.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/cart_active.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/checked_false.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/checked_false.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/checked_true.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/checked_true.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/demo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/demo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/demo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/demo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/demo3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/demo3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/demo4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/demo4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/edit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/edit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/favico.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/favico.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/headPage.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/headPage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/location.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/location.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/locations.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/locations.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/mainBg.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/mainBg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/money.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/money.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/noImg.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/noImg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/no_order.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/no_order.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/no_wifi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/no_wifi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/orders.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/orders.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/subtract.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/subtract.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/success.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/success.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/time.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/time.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/images/women.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/images/women.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/js/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/js/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/js/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/js/vant.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/js/vant.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/add-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/add-order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/address-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/address-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/address.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/address.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/no-wify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/no-wify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/pay-success.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/pay-success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/page/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/page/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/add-order.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/add-order.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/address-edit.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/address-edit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/address.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/address.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/no-wify.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/no-wify.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/order.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/order.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/pay-success.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/pay-success.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front/styles/vant.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/styles/vant.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "StanleySun233"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/StanleySun233/ruiji-takeout.git",
+    "accountId": "416ee34d-d17e-47c3-8412-b723b41b200a"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
 }]]></component>
   <component name="ProjectId" id="2lvYYFoa3zAMeGHqbaySrCaRu7g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.reggie_take_out [clean].executor": "Run",
+    "Maven.reggie_take_out [deploy].executor": "Run",
+    "Maven.reggie_take_out [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ReggieApplication.executor": "Run",
     "git-widget-placeholder": "main",
+    "java.suggest.annotation.dependency": "false",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Code/Java/ruiji-takeout/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -50,6 +142,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Java\ruiji-takeout\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ReggieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ruiji-takeout" />
@@ -75,11 +172,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726062063448</updated>
-      <workItem from="1726062064557" duration="478000" />
+      <workItem from="1726062064557" duration="2461000" />
     </task>
+    <task id="LOCAL-00001" summary="commit: update">
+      <option name="closed" value="true" />
+      <created>1726062726165</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726062726165</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit: update" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit: update" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ruiji_takeout$ReggieApplication.ic" NAME="ReggieApplication Coverage Results" MODIFIED="1726063526778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
