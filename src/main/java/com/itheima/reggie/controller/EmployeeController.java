@@ -1,6 +1,7 @@
 package com.itheima.reggie.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.itheima.reggie.common.R;
 import com.itheima.reggie.model.Employee;
@@ -8,12 +9,10 @@ import com.itheima.reggie.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 @Slf4j
 @RestController
@@ -51,13 +50,38 @@ public class EmployeeController {
         return R.success("退出成功");
     }
 
-//    @PostMapping("/page")
-//    public R<Page<Employee>> page(HttpServletRequest request)
-//    {
-//        LambdaQueryWrapper<Employee> queryWrapper=new LambdaQueryWrapper<>();
-//         employees = queryWrapper.orderByAsc(Employee::getId);
-//
-//
-//        return R.success();
-//    }
+    @PostMapping
+    public R<String> save(HttpServletRequest httpServletRequest,@RequestBody Employee employee)
+    {
+//        处理方法之一
+//        LambdaQueryWrapper<Employee> queryWrapper= new LambdaQueryWrapper<>();
+//        queryWrapper.eq(Employee::getUsername,employee.getUsername());
+//        Employee queryEmployee =employeeService.getOne(queryWrapper);
+//        if (queryEmployee != null)
+//            return R.error("用户名已存在");
+
+        employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        employee.setCreateTime(LocalDateTime.now());
+        employee.setUpdateTime(LocalDateTime.now());
+        Long currentEmployeeId = (Long) httpServletRequest.getSession().getAttribute("employee");
+        employee.setCreateUser(currentEmployeeId);
+        employee.setUpdateUser(currentEmployeeId);
+        employeeService.save(employee);
+
+
+        log.info("新增员工: {}",employee.toString());
+        return R.success("添加成功");
+    }
+
+
+    @GetMapping("/page")
+    public R<Page<Employee>> page(HttpServletRequest request)
+    {
+        LambdaQueryWrapper<Employee> queryWrapper=new LambdaQueryWrapper<>();
+//        <Employee> employeers = queryWrapper.orderByAsc(Employee::getId);
+
+
+        return R.success(new Page<Employee>());
+    }
+
 }
