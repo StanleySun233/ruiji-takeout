@@ -109,6 +109,8 @@ public class EmployeeController {
         }
 
         updateEmployee.setStatus(employee.getStatus());
+        updateEmployee.setUpdateTime(LocalDateTime.now());
+        updateEmployee.setUpdateUser(currentEmployee.getUpdateUser());
         employeeService.updateById(updateEmployee);
         return R.success("账号已"+ EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
     }
