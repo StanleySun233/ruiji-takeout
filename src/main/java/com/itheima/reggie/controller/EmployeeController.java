@@ -94,15 +94,20 @@ public class EmployeeController {
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Employee::getId, id);
         Employee currentEmployee = employeeService.getOne(queryWrapper);
+
+        Employee updateEmployee = employeeService.getById(employee.getId());
+
+//        log.info(currentEmployee.toString());
+//        log.info(updateEmployee.toString());
+
         if (!currentEmployee.getUsername().equals("admin")) {
             return R.error("非管理员无法操作");
         }
 
-        if(currentEmployee.getUsername().equals(employee.getUsername())){
+        if(currentEmployee.getUsername().equals(updateEmployee.getUsername())){
             return R.error("无法禁用管理员");
         }
 
-        Employee updateEmployee = employeeService.getById(employee.getId());
         updateEmployee.setStatus(employee.getStatus());
         employeeService.updateById(updateEmployee);
         return R.success("账号已"+ EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
