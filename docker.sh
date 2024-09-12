@@ -2,7 +2,7 @@
 
 # 设置要部署的项目目录和Git仓库地址
 echo "请确保/root/code/ruiji-takeout为项目地址"
-PROJECT_DIR="/root/code/" # 替换为您的项目路径
+PROJECT_DIR="/root/code/ruiji-takeout" # 替换为您的项目路径
 REPO_URL="https://github.com/StanleySun233/ruiji-takeout.git" # 替换为您的Git仓库地址
 BRANCH="main" # 替换为您的分支名称
 
