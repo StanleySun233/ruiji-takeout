@@ -41,11 +41,11 @@ public class DishFlavor implements Serializable {
 
 
     @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+    private String createUser;
 
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+    private String updateUser;
 
 
     //是否删除

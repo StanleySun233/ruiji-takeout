@@ -9,7 +9,7 @@ function getMemberList(params) {
 // 修改---启用禁用接口
 function enableOrDisableEmployee(params) {
     return $axios({
-        url: '/employee',
+        url: '/employee/status',
         method: 'put',
         data: {...params}
     })
@@ -32,6 +32,7 @@ function editEmployee(params) {
         data: {...params}
     })
 }
+
 
 // 修改页面反查详情接口
 function queryEmployeeById(id) {

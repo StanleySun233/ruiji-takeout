@@ -33,9 +33,9 @@ public class Employee implements Serializable {
     private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+    private String createUser;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+    private String updateUser;
 
 }

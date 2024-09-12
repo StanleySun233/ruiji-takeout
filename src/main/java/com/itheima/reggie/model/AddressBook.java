@@ -80,12 +80,12 @@ public class AddressBook implements Serializable {
 
     //创建人
     @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+    private String createUser;
 
 
     //修改人
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+    private String updateUser;
 
 
     //是否删除

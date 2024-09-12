@@ -17,7 +17,7 @@ FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
 # 从构建阶段拷贝 JAR 文件
-COPY --from=builder /app/target/your-app.jar app.jar
+COPY --from=builder "/app/target/reggie-takeout.jar" app.jar
 
 # 暴露应用端口
 EXPOSE 8080

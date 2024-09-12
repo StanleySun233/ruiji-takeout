@@ -7,6 +7,7 @@ import com.itheima.reggie.common.R;
 import com.itheima.reggie.itemize.EmployeeStatusEnum;
 import com.itheima.reggie.model.Employee;
 import com.itheima.reggie.service.EmployeeService;
+import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class EmployeeController {
         employee.setPassword(DigestUtils.md5DigestAsHex(employee.getPassword().getBytes()));
         employee.setCreateTime(LocalDateTime.now());
         employee.setUpdateTime(LocalDateTime.now());
-        Long currentEmployeeId = (Long) httpServletRequest.getSession().getAttribute("employee");
+        String currentEmployeeId = (String) httpServletRequest.getSession().getAttribute("employee");
         employee.setCreateUser(currentEmployeeId);
         employee.setUpdateUser(currentEmployeeId);
         employeeService.save(employee);
@@ -86,9 +87,13 @@ public class EmployeeController {
         return R.success(pages);
     }
 
-//    @GetMapping("/employee/<")
+    @GetMapping("/{id}")
+    public R<Employee> getById(@PathVariable String id) {
+        log.info("Select id = ",id);
+        return R.success(employeeService.getById(id));
+    }
 
-    @PutMapping
+    @PutMapping("/status")
     public R<String> status(HttpServletRequest request, @RequestBody Employee employee) {
         String id = (String) request.getSession().getAttribute("employee");
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
@@ -96,9 +101,6 @@ public class EmployeeController {
         Employee currentEmployee = employeeService.getOne(queryWrapper);
 
         Employee updateEmployee = employeeService.getById(employee.getId());
-
-//        log.info(currentEmployee.toString());
-//        log.info(updateEmployee.toString());
 
         if (!currentEmployee.getUsername().equals("admin")) {
             return R.error("非管理员无法操作");
@@ -113,6 +115,22 @@ public class EmployeeController {
         updateEmployee.setUpdateUser(currentEmployee.getUpdateUser());
         employeeService.updateById(updateEmployee);
         return R.success("账号已"+ EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
+    }
+
+    @PutMapping
+    public R<String> update(HttpServletRequest request, @RequestBody Employee employee) {
+        String id = (String) request.getSession().getAttribute("employee");
+        LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Employee::getId, id);
+        Employee currentEmployee = employeeService.getOne(queryWrapper);
+
+        if (!currentEmployee.getUsername().equals("admin")) {
+            return R.error("非管理员无法操作");
+        }
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(currentEmployee.getId());
+        employeeService.updateById(employee);
+        return R.success("修改成功");
     }
 
 }
