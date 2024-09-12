@@ -21,6 +21,23 @@ fi
 echo "使用Maven构建项目..."
 mvn clean install
 
+# 检查端口是否被占用
+PORT=8080
+
+# 使用 lsof 查找占用端口的进程 ID (PID)
+PID=$(lsof -ti:$PORT)
+
+# 检查端口是否被占用
+if [ -z "$PID" ]; then
+  echo "端口 $PORT 未被占用。"
+else
+  echo "端口 $PORT 被占用，进程 ID: $PID"
+
+  # 终止占用端口的进程
+  kill -9 $PID
+  echo "已终止占用端口 $PORT 的进程（PID: $PID）。"
+fi
+
 # 运行项目
 echo "运行Java程序..."
 java -jar target/*.jar # 假设目标目录下的jar文件是要运行的程序
