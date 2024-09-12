@@ -57,7 +57,7 @@ public class EmployeeController {
 //        if (queryEmployee != null)
 //            return R.error("用户名已存在");
 
-        employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        employee.setPassword(DigestUtils.md5DigestAsHex(employee.getPassword().getBytes()));
         employee.setCreateTime(LocalDateTime.now());
         employee.setUpdateTime(LocalDateTime.now());
         Long currentEmployeeId = (Long) httpServletRequest.getSession().getAttribute("employee");
