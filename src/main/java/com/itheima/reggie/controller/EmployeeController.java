@@ -61,12 +61,13 @@ public class EmployeeController {
 //        if (queryEmployee != null)
 //            return R.error("用户名已存在");
 
-        employee.setPassword(DigestUtils.md5DigestAsHex(employee.getPassword().getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        String currentEmployeeId = (String) httpServletRequest.getSession().getAttribute("employee");
-        employee.setCreateUser(currentEmployeeId);
-        employee.setUpdateUser(currentEmployeeId);
+//        employee.setPassword(DigestUtils.md5DigestAsHex(employee.getPassword().getBytes()));
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        String currentEmployeeId = (String) httpServletRequest.getSession().getAttribute("employee");
+//        employee.setCreateUser(currentEmployeeId);
+//        employee.setUpdateUser(currentEmployeeId);
+        employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
         employeeService.save(employee);
 
 
@@ -111,8 +112,8 @@ public class EmployeeController {
         }
 
         updateEmployee.setStatus(employee.getStatus());
-        updateEmployee.setUpdateTime(LocalDateTime.now());
-        updateEmployee.setUpdateUser(currentEmployee.getUpdateUser());
+//        updateEmployee.setUpdateTime(LocalDateTime.now());
+//        updateEmployee.setUpdateUser(currentEmployee.getUpdateUser());
         employeeService.updateById(updateEmployee);
         return R.success("账号已"+ EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
     }
@@ -127,8 +128,8 @@ public class EmployeeController {
         if (!currentEmployee.getUsername().equals("admin")) {
             return R.error("非管理员无法操作");
         }
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(currentEmployee.getId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(currentEmployee.getId());
         employeeService.updateById(employee);
         return R.success("修改成功");
     }

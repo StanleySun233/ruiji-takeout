@@ -2,6 +2,7 @@ package com.itheima.reggie.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.itheima.reggie.common.R;
+import com.itheima.reggie.common.ThreadUserIdGetter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 
@@ -27,7 +28,8 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String URI = request.getRequestURI();
-
+        long threadId = Thread.currentThread().getId();
+        log.info("current session id: {}", threadId);
         // 不需要过滤的清单
         if (checkValidURI(URI)) {
             log.info("本次请求不需要处理: {}", request.getRequestURI());
@@ -38,6 +40,8 @@ public class LoginCheckFilter implements Filter {
         // 用户session非空，不过滤
         if (request.getSession().getAttribute("employee") != null) {
             log.info("用户已登录: {}", request.getSession().getAttribute("employee"));
+            String loginId = (String) request.getSession().getAttribute("employee");
+            ThreadUserIdGetter.setCurrentId(loginId);
             filterChain.doFilter(request, response);
             return;
         }

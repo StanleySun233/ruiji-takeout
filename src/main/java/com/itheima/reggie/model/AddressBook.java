@@ -68,22 +68,15 @@ public class AddressBook implements Serializable {
     //是否默认 0 否 1是
     private Integer isDefault;
 
-    //创建时间
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
-
-    //更新时间
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
-
-    //创建人
     @TableField(fill = FieldFill.INSERT)
     private String createUser;
 
-
-    //修改人
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
 
