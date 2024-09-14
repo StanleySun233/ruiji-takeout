@@ -20,7 +20,8 @@ public class LoginCheckFilter implements Filter {
             "/employee/login",
             "/employee/logout",
             "/backend/**",
-            "/frontend/**"
+            "/frontend/**",
+            "/backend/page/demo/**"
     };
 
     @Override
@@ -58,6 +59,4 @@ public class LoginCheckFilter implements Filter {
         }
         return false;
     }
-
-    ;
 }

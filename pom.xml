@@ -16,7 +16,11 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.5.2</version> <!-- 确保使用的是最新版本 -->
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

@@ -3,6 +3,7 @@ package com.itheima.reggie.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.itheima.reggie.common.R;
+import com.itheima.reggie.exception.CategoryNotZeroException;
 import com.itheima.reggie.model.Category;
 import com.itheima.reggie.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Slf4j
@@ -27,9 +30,9 @@ public class CategoryController {
     }
 
     @GetMapping("/page")
-    public R<Page> page(int page, int pageSize,@Nullable String name) {
+    public R<Page> page(int page, int pageSize, @Nullable String name) {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(name),Category::getName, name)
+        queryWrapper.like(StringUtils.isNotEmpty(name), Category::getName, name)
                 .orderByDesc(Category::getSort);
 
         Page pages = new Page(page, pageSize);
@@ -40,7 +43,26 @@ public class CategoryController {
 
     @DeleteMapping
     public R<String> deleteById(String ids) {
-        categoryService.removeById(ids);
+        try {
+            categoryService.removeById(ids);
+        } catch (CategoryNotZeroException e) {
+            return R.error(e.getMessage());
+        }
+
         return R.success("删除成功");
+    }
+
+    @PutMapping
+    public R<String> updateById(@RequestBody Category category) {
+        categoryService.updateById(category);
+        return R.success("修改成功");
+    }
+
+    @GetMapping("/list/{type}")
+    public R<List<Category>> list(@PathVariable String type) {
+        LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Category::getType, type);
+        List<Category> list = categoryService.list(queryWrapper);
+        return R.success(list);
     }
 }

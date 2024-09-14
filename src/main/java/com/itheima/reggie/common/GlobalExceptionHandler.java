@@ -1,5 +1,6 @@
 package com.itheima.reggie.common;
 
+import com.itheima.reggie.exception.CategoryNotZeroException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,12 +21,17 @@ public class GlobalExceptionHandler {
         if (e.getMessage().contains("Duplicate entry")) {
             String[] split = e.getMessage().split(" ");
             StringBuilder sb = new StringBuilder();
-            sb.append(split[2], 1, split[2].length()-1).append("已存在");
+            sb.append(split[2], 1, split[2].length() - 1).append("已存在");
             String msg = sb.toString();
             log.error(msg);
             return R.error(msg);
         }
         log.error(e.getMessage());
-        return R.error("失败了: "+e.getMessage());
+        return R.error("失败了: " + e.getMessage());
+    }
+
+    public R<String> exceptionHandler(CategoryNotZeroException e) {
+        log.error(e.getMessage());
+        return R.error(e.getMessage());
     }
 }

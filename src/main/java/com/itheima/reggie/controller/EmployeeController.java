@@ -1,7 +1,6 @@
 package com.itheima.reggie.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.itheima.reggie.common.R;
 import com.itheima.reggie.itemize.EmployeeStatusEnum;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
@@ -74,9 +74,9 @@ public class EmployeeController {
 
 
     @GetMapping("/page")
-    public R<Page> page(int page, int pageSize,@Nullable String name) {
+    public R<Page> page(int page, int pageSize, @Nullable String name) {
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(name),Employee::getName, name);
+        queryWrapper.like(StringUtils.isNotEmpty(name), Employee::getName, name);
         queryWrapper.orderByDesc(Employee::getUpdateTime);
 
         Page pages = new Page(page, pageSize);
@@ -87,7 +87,7 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     public R<Employee> getById(@PathVariable String id) {
-        log.info("Select id = ",id);
+        log.info("Select id = ", id);
         return R.success(employeeService.getById(id));
     }
 
@@ -104,7 +104,7 @@ public class EmployeeController {
             return R.error("非管理员无法操作");
         }
 
-        if(currentEmployee.getUsername().equals(updateEmployee.getUsername())){
+        if (currentEmployee.getUsername().equals(updateEmployee.getUsername())) {
             return R.error("无法禁用管理员");
         }
 
@@ -112,7 +112,7 @@ public class EmployeeController {
 //        updateEmployee.setUpdateTime(LocalDateTime.now());
 //        updateEmployee.setUpdateUser(currentEmployee.getUpdateUser());
         employeeService.updateById(updateEmployee);
-        return R.success("账号已"+ EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
+        return R.success("账号已" + EmployeeStatusEnum.fromCode(updateEmployee.getStatus()));
     }
 
     @PutMapping
