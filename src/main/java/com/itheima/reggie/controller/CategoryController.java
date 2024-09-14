@@ -30,12 +30,12 @@ public class CategoryController {
     }
 
     @GetMapping("/page")
-    public R<Page> page(int page, int pageSize, @Nullable String name) {
+    public R<Page<Category>> page(int page, int pageSize, @Nullable String name) {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(StringUtils.isNotEmpty(name), Category::getName, name)
                 .orderByDesc(Category::getSort);
 
-        Page pages = new Page(page, pageSize);
+        Page<Category> pages = new Page<>(page, pageSize);
         categoryService.page(pages, queryWrapper);
 
         return R.success(pages);
@@ -58,10 +58,10 @@ public class CategoryController {
         return R.success("修改成功");
     }
 
-    @GetMapping("/list/{type}")
-    public R<List<Category>> list(@PathVariable String type) {
+    @GetMapping("/list")
+    public R<List<Category>> list(Category category) {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Category::getType, type);
+        queryWrapper.eq(StringUtils.isNotEmpty(category.getType().toString()),Category::getType, category.getType()).orderByDesc(Category::getUpdateTime);
         List<Category> list = categoryService.list(queryWrapper);
         return R.success(list);
     }

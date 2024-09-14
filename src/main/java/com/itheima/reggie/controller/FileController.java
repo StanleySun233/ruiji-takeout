@@ -20,7 +20,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/file")
-public class FileUploadController {
+public class FileController {
 
     @Value("${reggie.filepath}")
     private String filePath;
@@ -57,5 +57,12 @@ public class FileUploadController {
         servletOutputStream.close();
         fileInputStream.close();
 
+    }
+
+    public void deleteFile(String fileName) {
+        File file = new File(filePath + fileName);
+        if (file.exists()) {
+            file.delete();
+        }
     }
 }
