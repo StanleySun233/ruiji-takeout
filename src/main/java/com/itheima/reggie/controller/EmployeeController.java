@@ -76,7 +76,7 @@ public class EmployeeController {
     @GetMapping("/page")
     public R<Page<Employee>> page(int page, int pageSize, @Nullable String name) {
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(name), Employee::getName, name);
+        queryWrapper.like(StringUtils.isNotBlank(name), Employee::getName, name);
         queryWrapper.orderByDesc(Employee::getUpdateTime);
 
         Page<Employee> pages = new Page<>(page, pageSize);

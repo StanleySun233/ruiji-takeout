@@ -1,6 +1,7 @@
 package com.itheima.reggie.common;
 
 import com.itheima.reggie.exception.CategoryNotZeroException;
+import com.itheima.reggie.exception.SetmealNotDiscardException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -30,7 +31,14 @@ public class GlobalExceptionHandler {
         return R.error("失败了: " + e.getMessage());
     }
 
+    @ExceptionHandler(CategoryNotZeroException.class)
     public R<String> exceptionHandler(CategoryNotZeroException e) {
+        log.error(e.getMessage());
+        return R.error(e.getMessage());
+    }
+
+    @ExceptionHandler(SetmealNotDiscardException.class)
+    public R<String> exceptionHandler(SetmealNotDiscardException e) {
         log.error(e.getMessage());
         return R.error(e.getMessage());
     }

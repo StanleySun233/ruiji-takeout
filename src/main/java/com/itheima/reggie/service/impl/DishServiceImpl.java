@@ -10,12 +10,10 @@ import com.itheima.reggie.service.DishFlavorService;
 import com.itheima.reggie.service.DishService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +22,6 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
 
     @Autowired
     private DishFlavorService dishFlavorService;
-
-    @Value("${reggie.filepath}")
-    private String filePath;
 
     @Override
     @Transactional
@@ -38,7 +33,7 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
         dishFlavorService.remove(queryWrapper);
 
         List<DishFlavor> dishFlavors = dishDto.getFlavors();
-        dishFlavors.stream().map( (item) -> {
+        dishFlavors.stream().map((item) -> {
             item.setDishId(dishId);
             return item;
         }).collect(Collectors.toList());
@@ -52,7 +47,6 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
         LambdaQueryWrapper<DishFlavor> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(DishFlavor::getDishId, dishId);
         List<DishFlavor> flavors = dishFlavorService.list(queryWrapper);
-
         BeanUtils.copyProperties(dish, dto);
         dto.setFlavors(flavors);
 
@@ -65,7 +59,7 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
         this.save(dishDto);
         Long dishId = Long.parseLong(dishDto.getId());
         List<DishFlavor> dishFlavors = dishDto.getFlavors();
-        dishFlavors.stream().map( (item) -> {
+        dishFlavors.stream().map((item) -> {
             item.setDishId(dishId);
             return item;
         }).collect(Collectors.toList());
@@ -80,7 +74,7 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
         queryWrapper.eq(DishFlavor::getDishId, dishId);
         dishFlavorService.remove(queryWrapper);
 
-        File file = new File(filePath+dish.getImage());
+        File file = new File(dish.getImage());
         file.delete();
 
         this.removeById(dishId);

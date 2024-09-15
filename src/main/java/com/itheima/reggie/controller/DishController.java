@@ -15,7 +15,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,21 +35,21 @@ public class DishController {
     @GetMapping("/page")
     public R<Page<DishDto>> page(int page, int pageSize, String name) {
         LambdaQueryWrapper<Dish> dishQueryWrapper = new LambdaQueryWrapper<>();
-        dishQueryWrapper.like(StringUtils.isNotEmpty(name), Dish::getName, name)
+        dishQueryWrapper.like(StringUtils.isNotBlank(name), Dish::getName, name)
                 .orderByDesc(Dish::getUpdateTime);
 
         Page<Dish> dishPage = new Page<>(page, pageSize);
-        dishService.page(dishPage,dishQueryWrapper);
+        dishService.page(dishPage, dishQueryWrapper);
         Page<DishDto> dishDtoPage = new Page<>();
-        BeanUtils.copyProperties(dishPage, dishDtoPage,"records");
+        BeanUtils.copyProperties(dishPage, dishDtoPage, "records");
         List<Dish> records = dishPage.getRecords();
-        List<DishDto> dishDtos = records.stream().map( (item) -> {
+        List<DishDto> dishDtos = records.stream().map((item) -> {
             DishDto dishDto = new DishDto();
-            BeanUtils.copyProperties(item,dishDto);
+            BeanUtils.copyProperties(item, dishDto);
             Category category = categoryService.getById(item.getCategoryId());
             if (category != null) {
                 String categoryName = category.getName();
-                if (StringUtils.isNotEmpty(categoryName)) {
+                if (StringUtils.isNotBlank(categoryName)) {
                     dishDto.setCategoryName(categoryName);
                 }
             }
@@ -86,18 +85,28 @@ public class DishController {
         return R.success("禁用成功");
     }
 
+    @GetMapping("/list")
+    public R<List<Dish>> list(Dish dish) {
+        LambdaQueryWrapper<Dish> dishQueryWrapper = new LambdaQueryWrapper<>();
+        dishQueryWrapper.eq(StringUtils.isNotBlank(dish.toString()), Dish::getCategoryId, dish.getCategoryId())
+                .eq(Dish::getStatus, 1)
+                .orderByDesc(Dish::getUpdateTime);
+        List<Dish> dishs = dishService.list(dishQueryWrapper);
+        return R.success(dishs);
+    }
+
     @GetMapping("/{id}")
     public R<DishDto> getById(@PathVariable String id) {
         return R.success(dishService.getDishDtoById(id));
     }
 
     @DeleteMapping
-    public R<String> deleteByIds(String ids) {
+    public R<String> deleteByIds(@RequestParam String ids) {
         String[] idList = ids.split(",");
         for (String s : idList)
             dishService.deleteWithFlavorById(s);
 
-        return R.success("禁用成功");
+        return R.success("删除成功");
     }
 
 }

@@ -32,7 +32,7 @@ public class CategoryController {
     @GetMapping("/page")
     public R<Page<Category>> page(int page, int pageSize, @Nullable String name) {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(name), Category::getName, name)
+        queryWrapper.like(StringUtils.isNotBlank(name), Category::getName, name)
                 .orderByDesc(Category::getSort);
 
         Page<Category> pages = new Page<>(page, pageSize);
@@ -61,7 +61,7 @@ public class CategoryController {
     @GetMapping("/list")
     public R<List<Category>> list(Category category) {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(StringUtils.isNotEmpty(category.getType().toString()),Category::getType, category.getType()).orderByDesc(Category::getUpdateTime);
+        queryWrapper.eq(StringUtils.isNotBlank(category.getType().toString()), Category::getType, category.getType()).orderByDesc(Category::getUpdateTime);
         List<Category> list = categoryService.list(queryWrapper);
         return R.success(list);
     }

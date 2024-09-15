@@ -3,11 +3,14 @@
 瑞吉外卖，涉及java, spring boot, redis, mysql.
 
 # 一键部署
+
 ```shell
 git clone https://github.com/StanleySun233/ruiji-takeout.git
 cd ruiji-takeout
 ```
+
 修改`application.yaml`文件的参数
+
 ```shell
 sh docker.sh
 ```
