@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String name;
 
 
-    //手机号
+    //手机
     private String phone;
 
 

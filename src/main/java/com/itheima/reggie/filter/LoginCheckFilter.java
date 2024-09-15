@@ -21,7 +21,9 @@ public class LoginCheckFilter implements Filter {
             "/employee/logout",
             "/backend/**",
             "/frontend/**",
-            "/backend/page/demo/**"
+            "/backend/page/demo/**",
+            "/user/sendMsg",
+            "/user/login",
     };
 
     @Override
@@ -41,8 +43,17 @@ public class LoginCheckFilter implements Filter {
         // 用户session非空，不过滤
         if (request.getSession().getAttribute("employee") != null) {
             log.info("用户已登录: {}", request.getSession().getAttribute("employee"));
-            String loginId = (String) request.getSession().getAttribute("employee");
-            ThreadUserIdGetter.setCurrentId(loginId);
+            String employeeId = (String) request.getSession().getAttribute("employee");
+            ThreadUserIdGetter.setCurrentId(employeeId);
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // 客户session非空，不过滤
+        if (request.getSession().getAttribute("user") != null) {
+            log.info("用户已登录: {}", request.getSession().getAttribute("user"));
+            String userId = (String) request.getSession().getAttribute("user");
+            ThreadUserIdGetter.setCurrentId(userId);
             filterChain.doFilter(request, response);
             return;
         }

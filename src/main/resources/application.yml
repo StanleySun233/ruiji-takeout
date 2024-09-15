@@ -25,3 +25,5 @@ mybatis-plus:
       id-type: ASSIGN_ID
 reggie:
   filepath: D:/code/java/file/
+netease:
+  token: KLOSZMAEVHJBBEYI
