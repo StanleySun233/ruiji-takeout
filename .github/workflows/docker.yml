@@ -32,9 +32,13 @@ jobs:
       - name: Grant execute permission for docker.sh
         run: chmod +x ./docker.sh
 
-      # 运行 docker.sh 脚本
-      - name: Run docker.sh script
-        run: ./docker.sh
+      # 运行 docker build
+      - name: Run docker build
+        run: docker build -t ruiji-takeout .
+
+      # 运行docker容器
+      - name: Run docker container
+        run: docker run --rm --name ruiji -p 8081:8080 ruiji-takeout echo "Container ran successfully and is now stopping."
 
       # 验证 docker build 成功
       - name: Verify Docker build
