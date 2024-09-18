@@ -38,7 +38,7 @@ jobs:
 
       # 运行docker容器
       - name: Run docker container
-        run: docker run --rm --name ruiji -p 8081:8080 ruiji-takeout /bin/bash -c "echo 'Container ran successfully and is now stopping.'"
+        run: docker run -d --rm --name ruiji -p 8081:8080 ruiji-takeout /bin/bash -c "echo 'Container ran successfully and is now stopping.'"
 
       # 验证 docker build 成功
       - name: Verify Docker build
