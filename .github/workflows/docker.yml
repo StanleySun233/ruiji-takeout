@@ -4,7 +4,7 @@ name: Docker Build
 on:
   push:
     branches:
-      - master  # 或者你希望的分支名
+      - main  # 或者你希望的分支名
 
 jobs:
   build:
